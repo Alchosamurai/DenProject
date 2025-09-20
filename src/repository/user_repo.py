@@ -5,7 +5,6 @@ from src.models.user_model import User
 from sqlalchemy import select
 
 
-
 class UserRepo:
     def __init__(self) -> None:
         self.session = next(get_db())
@@ -47,6 +46,7 @@ class UserRepo:
 def user_repo_tests():
     repo = UserRepo()
     print(repo.get(1))
+
 
 if __name__ == "__main__":
     user_repo_tests()

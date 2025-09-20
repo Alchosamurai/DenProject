@@ -5,7 +5,6 @@ import os
 load_dotenv()
 
 
-
 class Settings:
     _database = os.getenv("DATABASE") or "sqlite:///database.db"
     _async_database = os.getenv("A_DATABASE") or "sqlite+aiosqlite:///database.db"

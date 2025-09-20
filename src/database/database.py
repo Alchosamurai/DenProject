@@ -19,6 +19,7 @@ def get_db():
     finally:
         db.close()
 
+
 url_async = Settings.get_adatabase()
 a_engine = create_async_engine(url_async)
 a_sessionmaker = async_sessionmaker(a_engine, expire_on_commit=False)
@@ -27,7 +28,6 @@ a_sessionmaker = async_sessionmaker(a_engine, expire_on_commit=False)
 async def a_get_db():
     async with a_sessionmaker() as db:
         yield db
-
 
 
 def a_connection(isolation_level: Optional[str] = None):
@@ -49,8 +49,7 @@ def a_connection(isolation_level: Optional[str] = None):
                 try:
                     if isolation_level:
                         await session.execute(
-                            text(f"BEGIN TRANSACTION ISOLATION LEVEL {
-                                 isolation_level}")
+                            text(f"BEGIN TRANSACTION ISOLATION LEVEL {isolation_level}")
                         )
 
                     result = await method(*args, **kwargs, session=session)
