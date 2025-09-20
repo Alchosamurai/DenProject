@@ -8,5 +8,6 @@ dependencies = [
     "aiogram>=3.22.0",
     "aiosqlite>=0.21.0",
     "alembic>=1.16.5",
+    "python-dotenv>=1.1.1",
     "sqlalchemy>=2.0.43",
 ]

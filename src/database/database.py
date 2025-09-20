@@ -4,7 +4,10 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("sqlite:///database.db")
+from config import Settings
+
+url_sync = Settings.get_database()
+engine = create_engine(url_sync)
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
@@ -16,8 +19,8 @@ def get_db():
     finally:
         db.close()
 
-
-a_engine = create_async_engine("sqlite+aiosqlite:///database.db")
+url_async = Settings.get_adatabase()
+a_engine = create_async_engine(url_async)
 a_sessionmaker = async_sessionmaker(a_engine, expire_on_commit=False)
 
 
