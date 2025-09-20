@@ -8,6 +8,8 @@ from alembic import context
 from src.models.base_model import Base
 from src.models.user_model import User #noqa
 
+from config import Settings
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -17,7 +19,7 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-config.set_main_option("sqlalchemy.url", "sqlite:///database.db")
+config.set_main_option("sqlalchemy.url", Settings.get_database())
 
 # add your model's MetaData object here
 # for 'autogenerate' support
